@@ -29,8 +29,13 @@ router.get("/home")
 router.get("/course")
 //Disini ada nama course, deskripsi, sama harga
 
+router.get("/premium")
+router.get("/premium/subscription")
+router.post("/premium/subscription")
 
-/** CRUD COURSE DISINI */
+router.get("/profile")
+router.get("/profile/edit")
+router.post("/profile/edit")
 
 
 module.exports = router
