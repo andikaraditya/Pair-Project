@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Free",
+        "description": "User uses a free trial up to 2 months membership"
+    },
+    {
+        "name": "Premium",
+        "description": "User uses a premium account and pays monthly fee"
+    }
+]
