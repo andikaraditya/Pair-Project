@@ -37,11 +37,5 @@ router.get("/profile")
 router.get("/profile/edit")
 router.post("/profile/edit")
 
-router.get("/course/add")
-router.post("/course/add")
-
-
-/** CRUD COURSE DISINI */
-
 
 module.exports = router
