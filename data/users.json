@@ -1,0 +1,12 @@
+[
+    {
+        "email": "abcdefg@mail.com",
+        "password": "12345678",
+        "RolesId": 1
+    },
+    {
+        "email": "johndoe@mail.com",
+        "password": "abcdefg",
+        "RolesId": 2
+    }
+]
