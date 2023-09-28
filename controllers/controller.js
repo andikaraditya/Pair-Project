@@ -75,8 +75,14 @@ class Controller {
         const {UserId} = req.session
         const params = req.params
 
-        Course.findByPk(params.id)
+        Course.findByPk(params.id, {
+            include: {
+                model: User,
+                include: UserProfile
+            },
+        })
         .then((result) => {
+            // res.send(result)
             res.render("courseDetail", {result, UserId})
         })
         .catch((err) => {
@@ -210,6 +216,25 @@ class Controller {
                 console.log(err)
                 res.send(err)
             })
+    }
+
+    static complete(req, res) {
+        const {UserId} = req.session
+        const courseId = req.params.id
+        
+        UserCourse.update({courseStatus: true}, {
+            where: {
+                UserId: UserId,
+                CourseId: courseId
+            }
+        })
+        .then((result) => {
+            res.redirect("/home")
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
     }
 }
 

@@ -42,6 +42,7 @@ router.get("/course/:id", Controller.courseDetail)
 //Disini ada nama course, deskripsi, sama harga
 
 router.get("/course/:id/enroll", Controller.joinCourse)
+router.get("/course/:id/complete", Controller.complete)
 
 router.get("/enrolledCourse/:id", Controller.enrolledCourse)
 
