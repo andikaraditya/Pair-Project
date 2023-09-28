@@ -6,11 +6,11 @@ const router = express.Router()
 router.get("/", Controller.loginPage)
 
 //Tampilkan form untuk menerima email dan password user
-router.get("/register")
-router.post("/register")
+router.get("/register", Controller.registerPage)
+router.post("/register", Controller.registerAccount)
 
 //User login. Cek database sama atau nggak, kemudian redirect ke home
-router.get("/login")
+router.get("/login", (req, res) => res.redirect("/"))
 router.post("/login")
 
 //Halaman home
