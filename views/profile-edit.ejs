@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Edit Profile</h1>
-    <h2><%= userProfile.fullName %></h2>
+    <h2><%= userProfile.fullName() %></h2>
     <form action="/profile/<%= user.id %>/edit" method="post" enctype="multipart/form-data">
         <table>
             <tbody>
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td><label for="dateOfBirth">Date of Birth:</label></td>
-                    <td><input type="date" name="dateOfBirth" id="dateOfBirth" value="<%= userProfile.formattedDate %>"></td>
+                    <td><input type="date" name="dateOfBirth" id="dateOfBirth" value="<%= userProfile.formattedDate() %>"></td>
                 </tr>
                 <tr>
                     <td><label for="education">Education</label></td>

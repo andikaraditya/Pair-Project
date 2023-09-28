@@ -35,7 +35,7 @@
     <h1>Profile Page</h1>
     <img src="<%= result.UserProfile.profilePicUrl %>" alt="">
     <h2>
-        <%= result.UserProfile.fullName %>
+        <%= result.UserProfile.fullName() %>
     </h2>
     <p>User Id: <%= result.id %>
     </p>
@@ -47,6 +47,8 @@
     <p>Date of Birth: <%= result.UserProfile.birthDate %>
     </p>
     <a href="/profile/<%= result.id %>/edit">Edit Profile</a>
+    <br>
+    <a href="/profile/<%= result.id %>/delete">Delete Account</a>
 </body>
 
 </html>

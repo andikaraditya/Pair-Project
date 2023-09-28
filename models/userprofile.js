@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       UserProfile.belongsTo(models.User)
     }
 
-    get fullName() {
+    fullName() {
       return this.firstName + " " + this.lastName
     }
 
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       return this.dateOfBirth.toLocaleDateString("id-ID", options)
     }
 
-    get formattedDate() {
+    formattedDate() {
       return this.dateOfBirth.toISOString().split("T")[0]
     }
   }
