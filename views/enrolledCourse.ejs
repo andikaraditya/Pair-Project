@@ -29,6 +29,17 @@
 
       <p>Enrolled Courses for userId <%= UserId %></p>
 
-
+      <div class="d-flex flex-row flex-wrap">
+        <% result.Courses.forEach((el) => { %>
+          <div class="card" style="width: 20rem; margin:10px">
+          <img src="<%= el.imageUrl %>" style="width: 100%" alt="...">
+          <div class="card-body">
+            <h5 class="<%= el.id %>"><%= el.name %></h5>
+            <p class="card-text">By <%= el.lecturer %></p>
+            <a href="/course/<%= el.id %>" class="btn btn-primary">See Detail</a>
+          </div>
+        </div>
+          <% }) %>
+        </div>
   </body>
 </html>

@@ -189,7 +189,27 @@ class Controller {
 
     static enrolledCourse(req, res) {
         const {UserId} = req.session
-        res.render("enrolledCourse", {UserId})
+        User.findByPk(UserId, {
+            include: Course
+        })
+        .then((result) => {
+            // res.send(result)
+            res.render("enrolledCourse", {UserId, result})
+        })
+    }
+
+    static joinCourse(req, res) {
+        const {UserId} = req.session
+        const {id} = req.params
+        UserCourse.create({
+            UserId: UserId,
+            CourseId: id
+        })
+            .then((result) => res.redirect("/home"))
+            .catch((err) => {
+                console.log(err)
+                res.send(err)
+            })
     }
 }
 

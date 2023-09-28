@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'UserCourse',
+    hooks: {
+      beforeCreate: (instance) => {
+        instance.courseStatus = false
+      }
+    }
   });
   return UserCourse;
 };
