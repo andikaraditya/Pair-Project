@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Profile Page</h1>
+    <h2><%= result.UserProfile.fullName %></h2>
+    <p>User Id: <%= result.id %></p>
+    <p>Account Type: <%= result.Role.name %> (<%= result.Role.description %>)</p>
+    <p>Email: <%= result.email %></p>
+    <p>Education: <%= result.UserProfile.education %></p>
+    <p>Date of Birth: <%= result.UserProfile.birthDate %></p>
+    <a href="/profile/<%= result.id %>/edit">Edit Profile</a>
+</body>
+</html>

@@ -33,9 +33,9 @@ router.get("/premium")
 router.get("/premium/subscription")
 router.post("/premium/subscription")
 
-router.get("/profile")
-router.get("/profile/edit")
-router.post("/profile/edit")
+router.get("/profile/:id", Controller.profilePage)
+router.get("/profile/:id/edit", Controller.editProfilePage)
+router.post("/profile/:id/edit", Controller.updateProfile)
 
 
 module.exports = router

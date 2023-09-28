@@ -13,6 +13,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       UserProfile.belongsTo(models.User)
     }
+
+    get fullName() {
+      return this.firstName + " " + this.lastName
+    }
+
+    get birthDate() {
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+      return this.dateOfBirth.toLocaleDateString("id-ID", options)
+    }
+
+    get formattedDate() {
+      return this.dateOfBirth.toISOString().split("T")[0]
+    }
   }
   UserProfile.init({
     firstName: DataTypes.STRING,
