@@ -28,13 +28,13 @@
       </nav>
 
       <figure class="figure">
-        <img src="<%= result.imageUrl %>" class="figure-img img-fluid rounded" alt="...">
+        <img src="<%= result.imageUrl %>" class="figure-img img-fluid rounded" alt="..." style="width: 500px">
         <figcaption class="figure-caption"><%= result.name %></figcaption><br>
         <figcaption class="figure-caption">Brought to you by <%= result.lecturer %></figcaption><br>
         <figcaption class="figure-caption"><%= result.description %></figcaption><br>
         <figcaption class="figure-caption">Enroll for <%= result.price %></figcaption><br>
         <figcaption class="figure-caption">There are //NUMBER// other students currently enrolling this course</figcaption><br>
       </figure>
-
+      <a href="/course/<%= result.id %>/enroll">Join This Course</a>
   </body>
 </html>
