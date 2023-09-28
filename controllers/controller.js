@@ -277,6 +277,13 @@ class Controller {
             }
         })
             .then((result) => {
+                return UserCourse.destroy({
+                    where: {
+                        UserId: id
+                    }
+                })
+            })
+            .then((result) => {
                 return User.destroy({
                     where: {
                         id: id

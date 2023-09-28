@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         notNull: {
           msg: "Email cannot be empty"
+        },
+        len: {
+          args: [15,30],
+          msg: "Email must be between 15 and 30 characters"
         }
       }
     },

@@ -38,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: {
           msg: "First name cannot be empty"
+        },
+        len: {
+          args: [5, 20],
+          msg: "First name must between 5 and 20 characters"
         }
       }
     },
@@ -50,6 +54,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: {
           msg: "Last name cannot be empty"
+        },
+        len: {
+          args: [5, 20],
+          msg: "Last name must between 5 and 20 characters"
         }
       }
     },
