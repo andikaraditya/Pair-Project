@@ -205,8 +205,8 @@ class Controller {
             include: Course
         })
             .then((result) => {
-                // res.send(result)
-                res.render("enrolledCourse", { UserId, result })
+                res.send(result)
+                // res.render("enrolledCourse", { UserId, result })
             })
     }
 

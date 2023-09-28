@@ -6,7 +6,18 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Login Here</h1>
+    <h1 style="text-align: center;">Welcome to Pintar.id</h1><br>
+    
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+    <h2>Login Here</h2>
     <% if (errors) { %>
     <p><b><%= errors %></b></p>
     <% } %>

@@ -28,6 +28,10 @@
       </nav>
 
       <h1>Your Enrolled Courses</h1>
+      <br><br>
+
+      <a href="/course/<%= UserId %>?finished=true">Finished Courses</a><br>
+      <a href="/course/<%= UserId %>?finished=false">Ongoing Courses</a><br>
 
       <div class="d-flex flex-row flex-wrap">
         <% result.Courses.forEach((el) => { %>
