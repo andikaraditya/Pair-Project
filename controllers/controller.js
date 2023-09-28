@@ -64,7 +64,8 @@ class Controller {
             console.log(err)
             res.send(err)
         })
-        
+    }
+    
     static profilePage(req, res) {
         const {id} = req.params
         User.findByPk(id, {
