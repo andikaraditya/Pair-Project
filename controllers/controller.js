@@ -17,7 +17,7 @@ class Controller {
             .then((account) => {
                 const isCorrect = bcrypt.compareSync(password, account.password)
                 if (isCorrect) {
-                    res.send(account)
+                    res.redirect("/home")
                 } else {
                     res.send("Wrong Password")
                 }
@@ -40,6 +40,30 @@ class Controller {
                 console.log(err)
                 res.send(err)
             })
+    }
+
+    static home (req, res) {
+        Course.findAll()
+        .then((result) => {
+            res.render("home", {result}) 
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
+    }
+
+    static courseDetail (req, res) {
+        const params = req.params
+
+        Course.findByPk(params.id)
+        .then((result) => {
+            res.render("courseDetail", {result})
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
     }
 }
 
