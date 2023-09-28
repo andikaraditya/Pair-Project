@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <h1>Edit Profile</h1>
+    <h2><%= userProfile.fullName %></h2>
+    <form action="/profile/<%= user.id %>/edit" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="firstName">First Name:</label></td>
+                    <td><input type="text" name="firstName" id="firstName" value="<%= userProfile.firstName %>"></td>
+                </tr>
+                <tr>
+                    <td><label for="lastName">Last Name:</label></td>
+                    <td><input type="text" name="lastName" id="lastName" value="<%= userProfile.lastName %>"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="text" name="email" id="email" value="<%= user.email %>"></td>
+                </tr>
+                <tr>
+                    <td><label for="dateOfBirth">Date of Birth:</label></td>
+                    <td><input type="date" name="dateOfBirth" id="dateOfBirth" value="<%= userProfile.formattedDate %>"></td>
+                </tr>
+                <tr>
+                    <td><label for="education">Education</label></td>
+                    <td>
+                        <select name="education" id="education">
+                            <option value="SMA" <%= userProfile.education === "SMA" ? "selected" : "" %>>SMA</option>
+                            <option value="S1" <%= userProfile.education === "S1" ? "selected" : "" %>>S1</option>
+                            <option value="S2" <%= userProfile.education === "S2" ? "selected" : "" %>>S2</option>
+                            <option value="S3" <%= userProfile.education === "S3" ? "selected" : "" %>>S3</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
