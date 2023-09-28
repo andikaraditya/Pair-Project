@@ -27,7 +27,7 @@
         </div>
       </nav>
 
-      <p>Enrolled Courses for userId <%= UserId %></p>
+      <h1>Your Enrolled Courses</h1>
 
       <div class="d-flex flex-row flex-wrap">
         <% result.Courses.forEach((el) => { %>
@@ -37,6 +37,7 @@
             <h5 class="<%= el.id %>"><%= el.name %></h5>
             <p class="card-text">By <%= el.lecturer %></p>
             <a href="/course/<%= el.id %>" class="btn btn-primary">See Detail</a>
+            <a href="/course/<%= el.id %>/complete" class="btn btn-primary" style="background-color: darkcyan;">Complete Course</a>
           </div>
         </div>
           <% }) %>
