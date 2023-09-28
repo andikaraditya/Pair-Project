@@ -14,7 +14,7 @@ router.get("/login", (req, res) => res.redirect("/"))
 router.post("/login", Controller.loginAccount)
 
 //Halaman home
-router.get("/home")
+router.get("/home", Controller.home)
 /**
  * Di halaman home:
  * Ada opsi edit profile
@@ -26,7 +26,7 @@ router.get("/home")
  */
 
 //Detail masing-masing course
-router.get("/course")
+router.get("/course/:id", Controller.courseDetail)
 //Disini ada nama course, deskripsi, sama harga
 
 router.get("/premium")
