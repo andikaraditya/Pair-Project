@@ -53,7 +53,7 @@
           <% result.Users.forEach((el) => { %>
             <tr>
               <th scope="row"><img src="<%= el.UserProfile.profilePicUrl %>" alt=""></th>
-              <td><%= el.UserProfile.fullName %></td>
+              <td><%= el.UserProfile.fullName() %></td>
               <td><%= el.UserProfile.education %></td>
             </tr>
           <% }) %>          

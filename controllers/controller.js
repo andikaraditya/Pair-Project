@@ -266,6 +266,29 @@ class Controller {
             res.send(err)
         })
     }
+
+    static deleteAccount(req, res) {
+        const { id } = req.params
+
+
+        UserProfile.destroy({
+            where: {
+                UserId:id
+            }
+        })
+            .then((result) => {
+                return User.destroy({
+                    where: {
+                        id: id
+                    }
+                })
+            })
+            .then((result) => res.redirect("/"))
+            .catch((err) => {
+                console.log(err)
+                res.send(err)
+            })
+    }
 }
 
 module.exports = Controller

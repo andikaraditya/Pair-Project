@@ -69,6 +69,7 @@ router.get("/profile/:id/add", Controller.addProfilePage)
 router.post("/profile/:id/add", Controller.createUserProfile)
 router.get("/profile/:id/edit", Controller.editProfilePage)
 router.post("/profile/:id/edit", upload.single("image"), Controller.updateProfile)
+router.get("/profile/:id/delete", Controller.deleteAccount)
 
 router.get("/logout", Controller.logoutUser)
 router.get("/premium/:id", Controller.getPremium)
