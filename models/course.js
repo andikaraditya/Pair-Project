@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const AllHelper = require('../helpers');
 module.exports = (sequelize, DataTypes) => {
   class Course extends Model {
     /**
@@ -12,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Course.belongsToMany(models.User, {through: models.UserCourse})
+    }
+
+    get rupiah() {
+      return AllHelper.toRupiah(this.price)
     }
   }
   Course.init({

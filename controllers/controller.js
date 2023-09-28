@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Course, Role, User, UserCourse, UserProfile } = require('../models');
 const bcrypt = require('bcryptjs')
 
@@ -48,7 +49,8 @@ class Controller {
     }
 
     static registerPage(req, res) {
-        res.render("register-page")
+        const {errors} = req.query
+        res.render("register-page", {errors})
     }
 
     static registerAccount(req, res) {
@@ -56,8 +58,14 @@ class Controller {
         User.create({ email, password })
             .then(() => res.redirect("/"))
             .catch((err) => {
-                console.log(err)
-                res.send(err)
+                if (err.name === "SequelizeValidationError") {
+                    const errors = err.errors.map((el) => el.message)
+                    // res.send(errors)
+                    res.redirect(`/register?errors=${errors}`)
+                } else {
+                    console.log(err)
+                    res.send(err)
+                }
             })
     }
 
@@ -65,7 +73,16 @@ class Controller {
     static home(req, res) {
         const { search } = req.query
         const { UserId } = req.session
-        Course.findAll()
+        const option = {
+            where: {}
+        }
+
+        if (search) {
+            option.where.name= {
+                [Op.iLike]: `%${search}%`
+            }
+        }
+        Course.findAll(option)
             .then((result) => {
                 res.render("home", { result, UserId })
             })
@@ -133,7 +150,7 @@ class Controller {
     }
 
     static updateProfile(req, res) {
-        console.log(req.file.path)
+        const picPath = req.file.path
         const { id } = req.params
         const { firstName, lastName, email, password, dateOfBirth, education } = req.body
         User.update({
@@ -184,8 +201,9 @@ class Controller {
     }
 
     static addProfilePage(req, res) {
+        const {errors} = req.query
         const { id } = req.params
-        res.render("profile-add", { id })
+        res.render("profile-add", { id , errors})
     }
 
     static createUserProfile(req, res) {
@@ -194,8 +212,14 @@ class Controller {
         UserProfile.create({ firstName, lastName, email, dateOfBirth, education, UserId: id })
             .then((result) => res.redirect("/home"))
             .catch((err) => {
-                console.log(err)
-                res.send(err)
+                if (err.name === "SequelizeValidationError") {
+                    const errors = err.errors.map((el) => el.message)
+                    // res.send(errors)
+                    res.redirect(`/profile/${id}/add?errors=${errors}`)
+                } else {
+                    console.log(err)
+                    res.send(err)
+                }
             })
     }
 

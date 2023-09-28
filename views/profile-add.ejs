@@ -7,7 +7,14 @@
 </head>
 <body>
     <h1>Add Profile</h1>
-    <h2></h2>
+    <% if (errors) { %>
+        <ul>
+            <li><b>ERRORS</b></li>
+            <% errors.split(",").forEach(el => { %>
+                <li><%= el %></li>
+                <% }) %>
+            </ul>
+        <% } %>
     <form action="/profile/<%= id %>/add" method="post">
         <table>
             <tbody>
