@@ -59,6 +59,7 @@ class Controller {
 
 
     static home (req, res) {
+        const {search} = req.query
         const {UserId} = req.session
         Course.findAll()
         .then((result) => {
@@ -71,11 +72,12 @@ class Controller {
     }
 
     static courseDetail (req, res) {
+        const {UserId} = req.session
         const params = req.params
 
         Course.findByPk(params.id)
         .then((result) => {
-            res.render("courseDetail", {result})
+            res.render("courseDetail", {result, UserId})
         })
         .catch((err) => {
             console.log(err)
@@ -183,6 +185,11 @@ class Controller {
                 console.log(err)
                 res.send(err)
             })
+    }
+
+    static enrolledCourse(req, res) {
+        const {UserId} = req.session
+        res.render("enrolledCourse", {UserId})
     }
 }
 

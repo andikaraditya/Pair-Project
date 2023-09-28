@@ -41,6 +41,8 @@ router.get("/home", Controller.home)
 router.get("/course/:id", Controller.courseDetail)
 //Disini ada nama course, deskripsi, sama harga
 
+router.get("/enrolledCourse/:id", Controller.enrolledCourse)
+
 router.get("/premium")
 router.get("/premium/subscription")
 router.post("/premium/subscription")

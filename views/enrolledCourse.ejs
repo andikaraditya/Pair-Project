@@ -20,38 +20,15 @@
                 <a class="nav-link" href="/enrolledCourse/<%= UserId %>">Your Enrolled Courses</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/profile/<%= UserId %>">Your Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/premium/<%= UserId %>">Premium Membership</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
               </li>
             </ul>
           </div>
         </div>
-      </nav><br>
+      </nav>
 
-      <form action="">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Search for courses here</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Find by course name" name="search">
-          </div>
-        <input class="btn btn-primary" type="submit" value="Submit">
-      </form><br><br>
-      
-      
-        <% result.forEach((el) => { %>
-            <div class="card" style="width: 18rem;"></div>
-                <img src="<%= el.imageUrl %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="<%= el.id %>"><%= el.name %></h5>
-                    <p class="card-text">By <%= el.lecturer %></p>
-                    <a href="/course/<%= el.id %>" class="btn btn-primary">See Detail</a>
-                </div>
-            </div>
-        <% }) %>
-      
+      <p>Enrolled Courses for userId <%= UserId %></p>
+
+
   </body>
 </html>

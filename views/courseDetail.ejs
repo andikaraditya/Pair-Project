@@ -17,13 +17,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">Your Profile</a>
+                <a class="nav-link" href="/enrolledCourse/<%= UserId %>">Your Enrolled Courses</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Premium Membership</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="/logout">Logout</a>
               </li>
             </ul>
           </div>
@@ -36,8 +33,8 @@
         <figcaption class="figure-caption">Brought to you by <%= result.lecturer %></figcaption><br>
         <figcaption class="figure-caption"><%= result.description %></figcaption><br>
         <figcaption class="figure-caption">Enroll for <%= result.price %></figcaption><br>
+        <figcaption class="figure-caption">There are //NUMBER// other students currently enrolling this course</figcaption><br>
       </figure>
-      
-      
+
   </body>
 </html>
