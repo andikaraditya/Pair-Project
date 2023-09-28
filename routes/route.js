@@ -11,7 +11,7 @@ router.post("/register", Controller.registerAccount)
 
 //User login. Cek database sama atau nggak, kemudian redirect ke home
 router.get("/login", (req, res) => res.redirect("/"))
-router.post("/login")
+router.post("/login", Controller.loginAccount)
 
 //Halaman home
 router.get("/home")
