@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Register Here</h1>
+    <% if (errors) { %>
+        <ul>
+            <li><b>ERRORS</b></li>
+            <% errors.split(",").forEach(el => { %>
+                <li><%= el %></li>
+                <% }) %>
+            </ul>
+        <% } %>
     <p><a href="/login">Login</a> if already have an account</p>
     <form action="/register" method="post">
         <label for="email">Email:</label>
