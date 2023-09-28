@@ -37,7 +37,12 @@
             <h5 class="<%= el.id %>"><%= el.name %></h5>
             <p class="card-text">By <%= el.lecturer %></p>
             <a href="/course/<%= el.id %>" class="btn btn-primary">See Detail</a>
-            <a href="/course/<%= el.id %>/complete" class="btn btn-primary" style="background-color: darkcyan;">Complete Course</a>
+            <% if (el.UserCourse.courseStatus === false) { %>
+              <a href="/course/<%= el.id %>/complete" class="btn btn-primary" style="background-color: darkcyan;">Complete Course</a>
+            <% } else { %>
+              <a href="/course/<%= el.id %>/complete" class="btn btn-primary" disabled style="background-color: goldenrod;">Completed</a>
+            <% } %>
+            
           </div>
         </div>
           <% }) %>
