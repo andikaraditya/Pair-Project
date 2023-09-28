@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Login Here</h1>
+    <% if (errors) { %>
+    <p><b><%= errors %></b></p>
+    <% } %>
     <p><a href="/register">Register</a> if you don't have an account</p>
     <form action="/login" method="post">
         <label for="email">Email:</label>

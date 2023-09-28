@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <h1>Add Profile</h1>
+    <h2></h2>
+    <form action="/profile/<%= id %>/add" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="firstName">First Name:</label></td>
+                    <td><input type="text" name="firstName" id="firstName"></td>
+                </tr>
+                <tr>
+                    <td><label for="lastName">Last Name:</label></td>
+                    <td><input type="text" name="lastName" id="lastName"></td>
+                </tr>
+                <tr>
+                    <td><label for="dateOfBirth">Date of Birth:</label></td>
+                    <td><input type="date" name="dateOfBirth" id="dateOfBirth"></td>
+                </tr>
+                <tr>
+                    <td><label for="education">Education</label></td>
+                    <td>
+                        <select name="education" id="education">
+                            <option value="SMA">SMA</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S3</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

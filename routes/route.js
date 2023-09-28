@@ -13,6 +13,18 @@ router.post("/register", Controller.registerAccount)
 router.get("/login", (req, res) => res.redirect("/"))
 router.post("/login", Controller.loginAccount)
 
+//Cek apakah user sudah login
+router.use((req, res, next) => {
+    if (!req.session.UserId) {
+        const error = "you need to login first"
+        res.redirect(`/?errors=${error}`)
+    } else {
+        next()
+    }
+})
+
+//User yang belum login tidak bisa mengakses semua routes dibawah
+
 //Halaman home
 router.get("/home", Controller.home)
 /**
@@ -34,8 +46,12 @@ router.get("/premium/subscription")
 router.post("/premium/subscription")
 
 router.get("/profile/:id", Controller.profilePage)
+router.get("/profile/:id/add", Controller.addProfilePage)
+router.post("/profile/:id/add", Controller.createUserProfile)
 router.get("/profile/:id/edit", Controller.editProfilePage)
 router.post("/profile/:id/edit", Controller.updateProfile)
 
+router.get("/logout", Controller.logoutUser)
+router.get("/premium/:id", Controller.getPremium)
 
 module.exports = router

@@ -4,7 +4,8 @@ const bcrypt = require('bcryptjs')
 class Controller {
 
     static loginPage(req, res) {
-        res.render("login-page")
+        const {errors} = req.query
+        res.render("login-page", {errors})
     }
 
     static loginAccount(req, res) {
@@ -16,10 +17,24 @@ class Controller {
         })
             .then((account) => {
                 const isCorrect = bcrypt.compareSync(password, account.password)
+                
                 if (isCorrect) {
-                    res.redirect("/home")
+                    req.session.UserId = account.id
+                    console.log(req.session.UserId)
+                    return UserProfile.findOne({
+                        where: {
+                            UserId: req.session.UserId
+                        }
+                    })
                 } else {
-                    res.send("Wrong Password")
+                    res.redirect(`/?errors=Wrong password or email`)
+                }
+            })
+            .then((result) => {
+                if (!result) {
+                    res.redirect(`/profile/${req.session.UserId}/add`)
+                } else {
+                    res.redirect("/home")
                 }
             })
             .catch((err) => {
@@ -44,9 +59,10 @@ class Controller {
 
 
     static home (req, res) {
+        const {UserId} = req.session
         Course.findAll()
         .then((result) => {
-            res.render("home", {result}) 
+            res.render("home", {result, UserId}) 
         })
         .catch((err) => {
             console.log(err)
@@ -134,6 +150,40 @@ class Controller {
             })
         }
 
+    static logoutUser(req, res) {
+        req.session.destroy((result) => {
+            res.redirect("/")
+        })
+    }
+
+    static getPremium(req, res) {
+        const {id} = req.params
+        User.findByPk(id)
+            .then((user) => {
+                return user.update({RolesId:2})
+            })
+            .then((result) => res.redirect(`/profile/${id}`))
+            .catch((err) => {
+                console.log(err)
+                res.send(err)
+            })
+    }
+
+    static addProfilePage(req, res) {
+        const {id} = req.params
+        res.render("profile-add", {id})
+    }
+
+    static createUserProfile(req, res) {
+        const {id} = req.params
+        const {firstName, lastName, email, dateOfBirth, education} = req.body
+        UserProfile.create({firstName, lastName, email, dateOfBirth, education, UserId: id})
+            .then((result) => res.redirect("/home"))
+            .catch((err) => {
+                console.log(err)
+                res.send(err)
+            })
+    }
 }
 
 module.exports = Controller
