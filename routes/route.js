@@ -1,6 +1,20 @@
 const express = require('express')
 const Controller = require('../controllers/controller')
 const router = express.Router()
+const multer = require('multer')
+const path = require("path")
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./images")
+    },
+    filename: (req, file, cb) => {
+        // console.log(file)
+        cb(null, req.session.UserId + "." + file.mimetype.split("/")[1] )
+    }
+})
+
+const upload = multer({storage: storage})
 
 //Halaman pertama. Ada pilihan join atau register
 router.get("/", Controller.loginPage)
@@ -54,7 +68,7 @@ router.get("/profile/:id", Controller.profilePage)
 router.get("/profile/:id/add", Controller.addProfilePage)
 router.post("/profile/:id/add", Controller.createUserProfile)
 router.get("/profile/:id/edit", Controller.editProfilePage)
-router.post("/profile/:id/edit", Controller.updateProfile)
+router.post("/profile/:id/edit", upload.single("image"), Controller.updateProfile)
 
 router.get("/logout", Controller.logoutUser)
 router.get("/premium/:id", Controller.getPremium)
