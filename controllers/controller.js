@@ -232,6 +232,10 @@ class Controller {
                 // res.send(result)
                 res.render("enrolledCourse", { UserId, result })
             })
+            .catch((err) => {
+                console.log(err)
+                res.send(err)
+            })         
     }
 
     static joinCourse(req, res) {
